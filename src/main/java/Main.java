@@ -34,7 +34,7 @@ public class Main {
                     } );
         }
         System.out.println ( "Просроченных бумаг - " + count );
-        System.out.println ( );
+        System.out.println ( " ---------------------------------------------------------------" );
         ChoiceScan ( );
     }
 
@@ -44,8 +44,7 @@ public class Main {
         String command = input.next ( );
         if ( ! command.equals ( "end" ) ) {
             if ( command.length ( ) == 3 ) {
-                //На запрос пользователя в виде кода валюты, например EU, USD, RUB и пр. выводить id и коды
-                //ценных бумаг, использующих заданную валюту.
+
                 if ( command.equals ( "RUB" ) || command.equals ( "USD" ) || command.equals ( "EUR" ) || command.equals ( "UAH" ) ) {
                     getSecuritiesByCurrency ( command );
                 }
@@ -70,6 +69,7 @@ public class Main {
                                 date = sdf4.parse ( command );
                             } catch ( ParseException e4 ) {
                                 System.out.println ( "Невверный запрос" );
+                                System.out.println ( " ---------------------------------------------------------------" );
                             }
                         }
                     }
@@ -83,6 +83,8 @@ public class Main {
                 }
             } else {
                 System.out.println ( "Невверный запрос" );
+                System.out.println ( " ---------------------------------------------------------------" );
+
             }
 
         }
@@ -91,13 +93,15 @@ public class Main {
     private static void getCompaniesByDate ( Date date ) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat ( "yyyy-MM-dd" );
         System.out.println ( "Компании, созданные после " + sdf.format ( date ) + ":" );
+        System.out.println ( " ---------------------------------------------------------------" );
+
         for ( Company company : companing ) {
             Date egrulDate = sdf.parse ( company.egrul_date );
             if ( egrulDate.after ( date ) ) {
                 System.out.println ( company.name_full + " " + company.egrul_date );
             }
         }
-        System.out.println ( );
+        System.out.println ( " ---------------------------------------------------------------" );
     }
 
     private static void getSecuritiesByCurrency ( String cur ) {
@@ -107,7 +111,7 @@ public class Main {
                     .filter ( x -> x.currency.code.equals ( cur ) )
                     .forEach ( x -> System.out.println ( x.id + " " + x.code ) );
         }
-        System.out.println ( );
+        System.out.println ( " ---------------------------------------------------------------" );
     }
 }
 
