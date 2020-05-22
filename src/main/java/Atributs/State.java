@@ -1,15 +1,14 @@
-public class State {
+package Atributs;
 
-    int id;
-    String name;
-    State state;
+public class State {
+    public int id;
+    public String name;
 
     @Override
-    public String toString ( ) {
+    public String toString() {
         return "State{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }
-
 }
